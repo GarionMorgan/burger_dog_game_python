@@ -1,4 +1,4 @@
-import pygame
+import pygame, random
 
 #initialize game
 pygame.init()
@@ -20,6 +20,7 @@ PLAYER_BOOST_VELOCITY = 10
 STARTING_BOOST_LEVEL = 100
 STARTING_BURGER_VELOCITY = 3
 BURGER_ACCELERATION = .25
+BUFFER_DISTANCE = 100
 
 score = 0
 burger_points = 0
@@ -67,10 +68,30 @@ boost_text = font.render("Boost: " + str(boost_level), True, ORANGE)
 boost_rect = boost_text.get_rect()
 boost_rect.topright = (WINDOW_WIDTH - 10, 50)
 
+game_over_text = font.render("FINAL SCORE: " + str(score), True, ORANGE)
+game_over_rect = game_over_text.get_rect()
+game_over_rect.center = (WINDOW_WIDTH//2,WINDOW_HEIGHT//2)
+
+continue_text = font.render("Press any key to play again", True, ORANGE)
+continue_rect = continue_text.get_rect()
+continue_rect.center = (WINDOW_WIDTH//2,WINDOW_HEIGHT//2 + 64)
 
 #set sounds and music
+bark_sound = pygame.mixer.Sound("./burger_dog_assets/bark_sound.wav")
+miss_sound = pygame.mixer.Sound("./burger_dog_assets/miss_sound.wav")
+pygame.mixer.music.load("./burger_dog_assets/bd_background_music.wav")
 
 #set images
+player_image_right = pygame.image.load("./burger_dog_assets/dog_right.png")
+player_image_left = pygame.image.load("./burger_dog_assets/dog_left.png")
+player_image = player_image_left
+player_rect = player_image.get_rect()
+player_rect.centerx = WINDOW_WIDTH//2
+player_rect.bottom = WINDOW_HEIGHT
+
+burger_image = pygame.image.load("./burger_dog_assets/burger.png")
+burger_rect = burger_image.get_rect()
+burger_rect.topleft = (random.randint(0,WINDOW_WIDTH-32), -BUFFER_DISTANCE)
 
 #main game loop
 running = True

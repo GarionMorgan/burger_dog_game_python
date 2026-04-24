@@ -101,5 +101,25 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    #fill surface
+    display_surface.fill(BLACK)
+
+    #blit the HUD
+    display_surface.blit(points_text,points_rect)
+    display_surface.blit(score_text,score_rect)
+    display_surface.blit(title_text,title_rect)
+    display_surface.blit(eaten_text,eaten_rect)
+    display_surface.blit(lives_text,lives_rect)
+    display_surface.blit(boost_text,boost_rect)
+    pygame.draw.line(display_surface, WHITE, (0,100), (WINDOW_WIDTH,100), 3)
+
+    #blit assests
+    display_surface.blit(player_image, player_rect)
+    display_surface.blit(burger_image, burger_rect)
+
+    #update display and tick clock
+    pygame.display.update()
+    clock.tick(FPS)
+
 #end game
 pygame.quit()

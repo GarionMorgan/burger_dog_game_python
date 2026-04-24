@@ -101,6 +101,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    #move the player
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and player_rect.left > 0:
+        player_rect.x -= player_velocity
+        player_image = player_image_left
+    if keys[pygame.K_RIGHT] and player_rect.right < WINDOW_WIDTH:
+        player_rect.x += player_velocity
+        player_image = player_image_right
+
     #fill surface
     display_surface.fill(BLACK)
 

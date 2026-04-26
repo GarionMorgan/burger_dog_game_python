@@ -114,6 +114,13 @@ while running:
     if keys[pygame.K_DOWN] and player_rect.bottom < WINDOW_HEIGHT:
         player_rect.y += player_velocity
 
+    #engage boost
+    if keys[pygame.K_SPACE] and boost_level > 0:
+        player_velocity = PLAYER_BOOST_VELOCITY
+        boost_level -= 1
+    else:
+        player_velocity = PLAYER_NORMAL_VELOCITY
+
     #fill surface
     display_surface.fill(BLACK)
 

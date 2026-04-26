@@ -6,7 +6,7 @@ pygame.init()
 #set display surface
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
-display_surface = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_HEIGHT))
+display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Burger Dog")
 
 #set FPS and clock
@@ -109,6 +109,10 @@ while running:
     if keys[pygame.K_RIGHT] and player_rect.right < WINDOW_WIDTH:
         player_rect.x += player_velocity
         player_image = player_image_right
+    if keys[pygame.K_UP] and player_rect.top > 100:
+        player_rect.y -= player_velocity
+    if keys[pygame.K_DOWN] and player_rect.bottom < WINDOW_HEIGHT:
+        player_rect.y += player_velocity
 
     #fill surface
     display_surface.fill(BLACK)

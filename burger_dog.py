@@ -121,6 +121,10 @@ while running:
     else:
         player_velocity = PLAYER_NORMAL_VELOCITY
 
+    #move burger and update burger points
+    burger_rect.y += burger_velocity
+    burger_points = int(burger_velocity*(WINDOW_HEIGHT-burger_rect.y+100))
+
     #fill surface
     display_surface.fill(BLACK)
 
